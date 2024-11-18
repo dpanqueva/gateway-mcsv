@@ -1,0 +1,21 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: products-mcsv
+          uri: lb://products-mcsv
+          predicates:
+            - Path=/api/products/**
+            #- Header=token, \d+
+            #- Method=GET, POST
+            #- Query=color, verde
+            #- Cookie=color, azul
+            #- Header=Content-Type, application/json
+          filters:
+            - StripPrefix=2
+        - id: items-mcsv
+          uri: lb://items-mcsv
+          predicates:
+            - Path=/api/items/**
+          filters:
+            - StripPrefix=2
