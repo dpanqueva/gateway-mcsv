@@ -46,3 +46,9 @@ spring:
             - Path=/api/items/**
           filters:
             - StripPrefix=2
+        - id: users-mcsv
+          uri: lb://users-mcsv
+          predicates:
+            - Path=/api/users/**
+          filters:
+            - StripPrefix=2
